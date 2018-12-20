@@ -1,9 +1,10 @@
-It's me, Tierney!
+It's me, Donovan!
 
 # Usage
 Via npx:
 ```
-npx bitandbang
+npx dtex
 ```
 
-Not including how to use it globally because I'm not sure why you'd want this as a global command. That'd be creepy.
+This was inspired by: https://github.com/bnb/bitandbang
+which makes for a much nicer card but made me uncomfortable due to the dependencies
