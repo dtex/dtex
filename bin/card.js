@@ -1,6 +1,22 @@
 #!/usr/bin/env node
 // 👆 Used to tell Node.js that this is a CLI tool
 
+const style = {
+  reset: '\x1b[0m',
+  accent: '\x1b[35m',
+  bold: '\x1b[1m',
+  divider: '_____________________________________________',
+  newline: '\n'
+}
+
+const accent = (text) => {
+  return `${style.accent}${text}${style.reset}`
+}
+
+const bold = (text) => {
+  return `${style.bold}${text}${style.reset}`
+}
+
 // Text definitions
 const data = {
   name: 'Donovan Buck /',
@@ -25,17 +41,22 @@ const data = {
 }
 
 // Actual strings we're going to output
-const newline = '\n'
-const divider = '\n_____________________________________________\n\n'
-const heading = `${data.name} ${data.handle}`
-const working = `${data.labelWork}  ${data.work}`
-const twittering = `${data.labelTwitter}  ${data.twitter}`
-const githubing = `${data.labelGitHub}  ${data.github}`
-const linkedining = `${data.labelLinkedIn}  ${data.linkedin}`
-const webing = `${data.labelWeb}  ${data.web}`
-const carding = `${data.labelCard}  ${data.npx}`
+const output = [
+  '',
+  style.divider,
+  '',
+  `${data.name} ${accent(data.handle)}`,
+  '',
+  `${bold(data.labelWork)}  ${data.work}`,
+  `${bold(data.labelTwitter)}  ${accent(data.twitter)}`,
+  `${bold(data.labelGitHub)}  ${accent(data.github)}`,
+  `${bold(data.labelLinkedIn)}  ${accent(data.linkedin)}`,
+  `${bold(data.labelWeb)}  ${accent(data.web)}`,
+  '',
+  `${bold(data.labelCard)}  ${data.npx}`,
+  '',
+  style.divider,
+  ''
+]
 
-// Put all our output together into a single variable so we can use boxen effectively
-const output = divider + heading + newline + newline + working + newline + twittering + newline + githubing + newline + linkedining + newline + webing + newline + newline + carding + divider + data.disclaimer.join('\n') + newline
-
-console.log(output)
+console.log(output.join('\n') + style.newline)
