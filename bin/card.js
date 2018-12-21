@@ -1,20 +1,32 @@
 #!/usr/bin/env node
 // 👆 Used to tell Node.js that this is a CLI tool
 
-const style = {
-  reset: '\x1b[0m',
-  accent: '\x1b[35m',
-  bold: '\x1b[1m',
-  divider: '_____________________________________________',
-  newline: '\n'
+const colors = {
+  black: '30m',
+  red: '31m',
+  green: '32m',
+  yellow: '33m',
+  blue: '34m',
+  purple: '35m',
+  cyan: '36m',
+  white: '37m',
 }
 
 const accent = (text) => {
-  return `${style.accent}${text}${style.reset}`
+  return `${style.accent}${text}\x1b[0m`
 }
 
 const bold = (text) => {
-  return `${style.bold}${text}${style.reset}`
+  return `\x1b[1m${text}\x1b[0m`
+}
+
+const style = {
+  // Change accent color here
+  accent: `\x1b[${colors.purple}`,
+  
+  // Change card width here
+  divider: ''.padEnd(44, '_')
+
 }
 
 // Text definitions
@@ -32,17 +44,11 @@ const data = {
   labelGitHub: '    GitHub:',
   labelLinkedIn: '  LinkedIn:',
   labelWeb: '       Web:',
-  labelCard: '      Card:',
-  disclaimer: [
-    'Thank you for trusting my npx card. It is not',
-    'as pretty as some others but it has zero',
-    'dependencies.'
-  ]
+  labelCard: '      Card:'
 }
 
 // Actual strings we're going to output
 const output = [
-  '',
   style.divider,
   '',
   `${data.name} ${accent(data.handle)}`,
@@ -54,9 +60,10 @@ const output = [
   `${bold(data.labelWeb)}  ${accent(data.web)}`,
   '',
   `${bold(data.labelCard)}  ${data.npx}`,
-  '',
   style.divider,
   ''
 ]
 
-console.log(output.join('\n') + style.newline)
+console.log(output.join('\n'))
+
+
